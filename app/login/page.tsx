@@ -1,6 +1,6 @@
 "use client";
-import {Checkbox, Divider, Space, Spin, notification} from "antd"
-// import Accounts from '@/services/Accounts'
+import {Checkbox, Spin, notification} from "antd"
+import Accounts from '@/services/Accounts'
 import Link from "next/link";
 import {FormEvent, ReactNode, useState,} from 'react'
 
@@ -16,7 +16,7 @@ export default function LoginPage(){
     });
   };
   
-  const [email,setEmail] = useState("")
+  const [username,setUsername] = useState("")
   const [password,setPassword] = useState("")
   const [passwordShown,setPasswordShown] = useState(false)
 
@@ -32,28 +32,28 @@ export default function LoginPage(){
     }
   }
 
-//   const handleSubmit = async(e:FormEvent)=>{
-//     e.preventDefault()
-//     setLoading(true)
-//     const response = await Accounts.login(email,password)
-//     setLoading(false)
-//     console.log(response)
-//     if(response.status !== "success"){
-//       openNotification(response.error_code,response.error)
-//       return null
-//     }
-//     window.location.assign('/')
-//   }
+  const handleSubmit = async(e:FormEvent)=>{
+    e.preventDefault()
+    setLoading(true)
+    const response = await Accounts.login(username,password)
+    setLoading(false)
+    console.log(response)
+    if(response.status !== "success"){
+      openNotification(response.error_code,response.error_message)
+      return null
+    }
+    window.location.assign('/')
+  }
     return(
       <>
       {contextHolder}
       <section className="my-8 max-w-md mx-auto gap-3">
         <div>
-        <form className="border border-gray-200 p-6">
-           <h3 className="font-semibold text-2xl text-center mb-4 text-gray-900">Secure Client Login</h3>
+        <form onSubmit={handleSubmit} className="border bg-white border-gray-200 p-6">
+           <h3 className="font-semibold text-2xl text-center mb-4 text-gray-900">Admin Login</h3>
            <div className="my-3">
-              <label htmlFor="" className="font-semibold text-gray-700 text-sm">Email <span>*</span></label>
-              <input value={email} required onChange={handleInput(setEmail)} type="email" className="w-full p-1 text-sm rounded-md border border-gray-200" placeholder="Enter Your Email" />
+              <label htmlFor="" className="font-semibold text-gray-700 text-sm">Username <span>*</span></label>
+              <input value={username} required onChange={handleInput(setUsername)} type="text" className="w-full p-1 text-sm rounded-md border border-gray-200" placeholder="Enter Your Username" />
            </div> 
            <div className="my-3">
               <label htmlFor="" className="font-semibold text-gray-700 text-sm">Password <span>*</span></label>
@@ -84,14 +84,6 @@ export default function LoginPage(){
            </button>
            :<button className="w-full rounded-md p-2 bg-dark text-white">Login</button>
            }
-       
-           <Divider>
-           <p className="text-gray-400 text-sm  text-center my-2"> OR </p>
-           </Divider>      
-           <Link href={"/accounts/apply"}>
-            <button className="font-semibold my-1 w-full py-2 rounded-md border bg-primary border-gray-200 text-gray-700">Apply For a Designer Role</button>
-            </Link>
-
          </form>
         </div>
       </section>

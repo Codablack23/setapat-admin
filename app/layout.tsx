@@ -11,6 +11,7 @@ export const metadata = {
 }
 
 import { ConfigProvider, type ThemeConfig } from 'antd';
+import AdminContextProvider from './AdminContext'
 
 const theme: ThemeConfig = {
   token: {
@@ -27,12 +28,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white">
+      <body className="bg-gray-100">
         <ConfigProvider theme={theme}>
-        <Navbar/>
-        <main className="main-container h-[100%] relative">
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-        </main>
+         <AdminContextProvider>
+            <Navbar/>
+            <main className="main-container h-[100%] relative">
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+            </main>
+         </AdminContextProvider>
         </ConfigProvider>
       </body>
     </html>

@@ -1,42 +1,89 @@
-import MainHeader from "./components/Header";
-import MainLayout from "./components/MainLayout";
-import Order from "./components/Order";
-import SearchBar from "./components/media/SearchBar";
+"use client";
 
-export default function Home() {
+import { Skeleton } from "antd";
+import useAuth from "./hooks/useAuth"
+import { useContext, useEffect } from "react";
+import Sections from "./components/Dashboard/Sections";
+import { AdminContext } from "./AdminContext";
+import Overview from "./components/Dashboard/Overview";
+
+function Loader(){
   return (
-  <MainLayout>
+    <div className="grid md:grid-cols-2 gap-6">
     <div>
-      <p className="my-2 font-semibold text-2xl">Hi Joe Lets mix some good design elements</p>
-      <div className="flex items-center justify-between my-4">
-        <div className="flex items-center gap-4">
-          <p className="text-lg">Rank</p>
-          <span className="inline-block py-2 text-sm font-semibold px-4 bg-black rounded-md text-white">Entry Level Developer</span>
-        </div>
-        <div className="flex items-center gap-6">
-        <span className="inline-block py-2 px-4 bg-black font-semibold rounded-md text-sm text-white">301 Designs created</span>
-        </div>
+      <div className="my-4">
+      <Skeleton.Button active block style={{height:"40px"}}/>
+      </div> 
+      <div className="my-4">
+      <Skeleton.Button active block style={{height:"40px"}}/>
+      </div> 
+      <div className="my-4">
+      <Skeleton.Button block active style={{height:"40px"}}/>
+      </div> <div className="my-4">
+      <Skeleton.Button block active style={{height:"40px"}}/>
       </div>
-      <MainHeader active={1}/>
-      <div className="my-2">
-      <SearchBar title="with order number"/>
-       <div className="my-2 max-h-[400px] overflow-y-auto">
-        <Order
-        status ={"in Progress"}
-        />
-       </div>
-      </div>
-      <div className="bg-gray-100 p-2 flex items-center justify-between">
-        <div className="text-center">
-          <p className="text-xl font-semibold">1</p>
-          <p className="text-sm">Total Designs</p>
-        </div> 
-        <div className="text-center">
-          <p className="text-xl font-semibold">N2,500</p>
-          <p className="text-sm">Total Payment</p>
-        </div>
-       </div>
     </div>
-  </MainLayout>
+    <div>
+     <div className="my-4">
+     <Skeleton.Button block active style={{height:"200px"}}/>
+     </div>
+    </div>
+   </div>
+  )
+}
+const accountLinks = [
+  {title:"Users",url:"/users"},
+  {title:"Admins",url:"/admins"},
+  {title:"Designers",url:"/designers"},
+  {title:"Supervisors",url:"/supervisors"},
+]
+const products_and_pricing = [
+  {title:"Design Types",url:"/design-types"},
+  {title:"Pricing",url:"/pricing"},
+]
+const Feedbacks = [
+  {title:"Designer Feedbacks",url:"/feedbacks"},
+  {title:"Customer Feedbacks",url:`/feedbacks?type="customer`},
+]
+const HR = [
+  {title:"Designer Applications",url:"/applications"},
+]
+export default function Home() {
+  const {loading,user,overview} = useContext(AdminContext)
+  useEffect(()=>{
+    if(!loading && !user){
+      window.location.assign("/login")
+    }
+  },[loading,user])
+  return (
+   loading
+   ?<Loader/>
+   :user
+   ?(
+    <div className="grid md:grid-cols-5 mt-10 gap-8">
+        <div className="md:col-span-3">
+          <Sections
+          title="Accounts"
+          links={accountLinks}
+          />  
+          <Sections
+          title="Human Resource"
+          links={HR}
+          />
+          <Sections
+          title="Products and Pricing"
+          links={products_and_pricing}
+          />   
+          <Sections
+          title="Customer and Designers Feedback"
+          links={Feedbacks}
+          />  
+        </div> 
+        <div className="md:col-span-2">
+         <Overview/>
+        </div>
+    </div>
+   )
+   :<Loader/>
   )
 }
