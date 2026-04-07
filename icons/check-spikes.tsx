@@ -1,0 +1,16 @@
+interface IconProps{
+    height?:string | number,
+    width?:string | number,
+}
+
+export default function CheckSpikes(props:IconProps){
+    const {height,width} = props
+    return (
+        <svg width={width || "30"} height={height || "28"} viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M29.4016 14.002L26.2156 10.348L26.6656 5.506L21.9316 4.426L19.4656 0.25L15.0016 2.176L10.5556 0.25L8.07156 4.426L3.35556 5.506L3.80556 10.348L0.601562 14.002L3.78756 17.656L3.33756 22.498L8.07156 23.578L10.5376 27.754L15.0016 25.81L19.4476 27.736L21.9136 23.56L26.6476 22.48L26.1976 17.638L29.4016 14.002ZM12.4636 19.528L8.64756 15.712L9.92556 14.434L12.4636 16.972L20.0956 9.34L21.3736 10.618L12.4636 19.528Z" fill="black"/>
+        </svg>
+    )
+}
+
+
+

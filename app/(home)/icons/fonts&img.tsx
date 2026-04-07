@@ -1,0 +1,9 @@
+export default function FontsIcon(){
+    return (
+        <svg width="24" height="24" viewBox="0 0 36 36" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M30.8 3H5.2C3.44 3 2 4.5 2 6.33333V29.6667C2 31.5 3.44 33 5.2 33H30.8C32.56 33 34 31.5 34 29.6667V6.33333C34 4.5 32.56 3 30.8 3ZM14.8 26.3333H6.8V23H14.8V26.3333ZM14.8 19.6667H6.8V16.3333H14.8V19.6667ZM14.8 13H6.8V9.66667H14.8V13ZM22.512 23L18 18.2667L20.256 15.9167L22.512 18.2833L27.584 13L29.856 15.3667L22.512 23Z" fill="currentColor"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M30.8 3H5.2C3.44 3 2 4.5 2 6.33333V29.6667C2 31.5 3.44 33 5.2 33H30.8C32.56 33 34 31.5 34 29.6667V6.33333C34 4.5 32.56 3 30.8 3ZM14.8 26.3333H6.8V23H14.8V26.3333ZM14.8 19.6667H6.8V16.3333H14.8V19.6667ZM14.8 13H6.8V9.66667H14.8V13ZM22.512 23L18 18.2667L20.256 15.9167L22.512 18.2833L27.584 13L29.856 15.3667L22.512 23Z" fill="currentColor" fill-opacity="0.2"/></g>
+        </svg>
+
+    )
+}

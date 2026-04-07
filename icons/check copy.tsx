@@ -1,0 +1,33 @@
+/** @format */
+
+interface IconProps {
+	height?: string | number;
+	width?: string | number;
+	fillColor?: string;
+	className?: string;
+}
+
+export default function CheckIconFilled(props: IconProps) {
+	const { height, width, fillColor, className } = props;
+	return (
+		<svg
+			className={className}
+			width={width || "36"}
+			height={height || "36"}
+			viewBox="0 0 36 36"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_10102_44498)">
+				<path
+					d="M28.5 4.5H7.5C5.835 4.5 4.5 5.85 4.5 7.5V28.5C4.5 30.15 5.835 31.5 7.5 31.5H28.5C30.165 31.5 31.5 30.15 31.5 28.5V7.5C31.5 5.85 30.165 4.5 28.5 4.5ZM15 25.5L7.5 18L9.615 15.885L15 21.255L26.385 9.87L28.5 12L15 25.5Z"
+					fill={fillColor || "white"}
+				/>
+			</g>
+			<defs>
+				<clipPath id="clip0_10102_44498">
+					<rect width="36" height="36" fill="white" />
+				</clipPath>
+			</defs>
+		</svg>
+	);
+}
