@@ -6,6 +6,7 @@ import TimeIcon from "@/icons/time";
 import { ApplicationsProvider, DesignerApplication } from "@/services";
 import { ConfigProvider, Image, Spin } from "antd";
 import { DateTime } from "luxon";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -208,6 +209,34 @@ export default function Page() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="my-8">
+        <header className="bg-dark uppercase rounded-t-md text-white p-2 text-lg">
+          Designer Links
+        </header>
+        <div className="my-4 space-y-4">
+          <div className="flex items-center">
+            <p>Portfolio Link</p>
+            <Link
+              target="_blank"
+              href={application.portfolio_link}
+              className="inline-block ml-auto bg-dark py-1 px-16 rounded-md text-white"
+            >
+              Visit
+            </Link>
+          </div>
+          <div className="flex items-center">
+            <p>Resume Link</p>
+            <Link
+              target="_blank"
+              href={application.resume_link}
+              className="inline-block ml-auto bg-dark py-1 px-16 rounded-md text-white"
+            >
+              Visit
+            </Link>
           </div>
         </div>
       </section>
