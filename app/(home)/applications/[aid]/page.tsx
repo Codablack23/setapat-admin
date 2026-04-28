@@ -225,7 +225,7 @@ export default function Page() {
               href={application.portfolio_link}
               className="inline-block ml-auto bg-dark py-1 px-16 rounded-md text-white"
             >
-              Visit
+              View
             </Link>
           </div>
           <div className="flex items-center">
@@ -235,7 +235,7 @@ export default function Page() {
               href={application.resume_link}
               className="inline-block ml-auto bg-dark py-1 px-16 rounded-md text-white"
             >
-              Visit
+              View
             </Link>
           </div>
         </div>
