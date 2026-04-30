@@ -28,7 +28,7 @@ export interface DesignerApplication {
   resume_link: string;
   telegram_handle: string;
 
-  rank: DesignerRank;
+  rank: Rank;
   status: ApplicationStatus;
   source: ApplicationSource;
 
