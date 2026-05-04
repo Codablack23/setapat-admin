@@ -16,9 +16,7 @@ export function AcceptApplicationButton({
   const handleAcceptApplication = async () => {
     setLoading(true);
     try {
-      const res = await ApplicationsProvider.acceptApplication(application.id, {
-        rank: application.rank,
-      });
+      const res = await ApplicationsProvider.acceptApplication(application.id);
       if (res.status != "success") {
         throw new Error(res.message || "Failed to accept application");
       }
